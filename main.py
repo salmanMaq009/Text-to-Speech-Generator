@@ -8,8 +8,8 @@ st.set_page_config(page_title="Text-to-Speech Generator", layout="centered")
 st.title("Text-to-Speech Generator")
 st.write("Convert your text into speech using pyttsx3.")
 
-# Initialize TTS engine
-engine = pyttsx3.init()
+# Initialize TTS engine with 'sapi5' driver for Windows
+engine = pyttsx3.init(driverName='sapi5')
 
 # Input text box
 text = st.text_area("Enter the text you want to convert to speech:", "", height=150)
