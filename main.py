@@ -1,5 +1,6 @@
 import streamlit as st
 import pyttsx3
+import platform
 
 # Set up the page configuration
 st.set_page_config(page_title="Text-to-Speech Generator", layout="centered")
@@ -8,8 +9,11 @@ st.set_page_config(page_title="Text-to-Speech Generator", layout="centered")
 st.title("Text-to-Speech Generator")
 st.write("Convert your text into speech using pyttsx3.")
 
-# Initialize TTS engine with 'sapi5' driver for Windows
-engine = pyttsx3.init(driverName='sapi5')
+# Conditional TTS engine initialization based on OS
+if platform.system() == "Windows":
+    engine = pyttsx3.init(driverName='sapi5')
+else:
+    engine = pyttsx3.init(driverName='espeak')
 
 # Input text box
 text = st.text_area("Enter the text you want to convert to speech:", "", height=150)
